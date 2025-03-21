@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, Image } from 'react-native';
 import { ref, onValue, update } from 'firebase/database';
 import { db } from '../firebase';
 import { Card, Title, Paragraph, Button } from 'react-native-paper';
@@ -42,6 +42,7 @@ export const BookDetailsScreen = ({ route, navigation }: { route: any, navigatio
   return (
     <View style={styles.container}>
       <Card>
+      <Card.Cover source={{ uri: book.imageUrl }} style={styles.coverImage}/>
         <Card.Content>
           <Title style={styles.title}>{book.title}</Title>
           <Paragraph>Author: {book.author}</Paragraph>
@@ -65,8 +66,22 @@ export const BookDetailsScreen = ({ route, navigation }: { route: any, navigatio
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 10 },
-  title: { fontSize: 24, marginBottom: 10 },
-  description: { marginTop: 10 },
-  button: { marginTop: 20 }
+  container: { 
+    padding: 10 
+  },
+  title: { 
+    fontSize: 24, 
+    marginBottom: 10 
+  },
+  description: { 
+    marginTop: 10 
+  },
+  button: { 
+    marginTop: 20 
+  },
+  coverImage: {
+    height: 400,
+    resizeMode: 'contain',
+    backgroundColor: '#f5f5f5'
+  }
 });

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet, Image } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
@@ -9,7 +9,10 @@ interface Book {
   id: string;
   title: string;
   author: string;
+  description: string;
+  publishedYear: number;
   isBorrowed: boolean;
+  imageUrl: string;
 }
 
 export const BookListScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
@@ -44,6 +47,7 @@ export const BookListScreen = ({ navigation }: { navigation: NavigationProp<any>
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Card style={styles.card} onPress={() => navigation.navigate('BookDetails', { bookId: item.id })}>
+            <Card.Cover source={{ uri: item.imageUrl }} />
             <Card.Content>
               <Title>{item.title}</Title>
               <Title style={styles.author}>{item.author}</Title>
@@ -59,9 +63,27 @@ export const BookListScreen = ({ navigation }: { navigation: NavigationProp<any>
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 10 },
-  card: { margin: 5 },
-  author: { fontSize: 16, color: '#666' },
-  status: { fontSize: 14, color: '#888' },
-  button: { margin: 10 }
+  container: { 
+    flex: 1, 
+    padding: 10 
+  },
+  card: { 
+    margin: 5,
+    overflow: 'hidden'
+  },
+  author: { 
+    fontSize: 16, 
+    color: '#666' 
+  },
+  status: { 
+    fontSize: 14, 
+    color: '#888' 
+  },
+  button: { 
+    margin: 10 
+  },
+  cardImage: {
+    height: 150,
+    resizeMode: 'cover'
+  }
 });
