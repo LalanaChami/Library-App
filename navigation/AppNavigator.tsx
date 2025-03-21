@@ -10,7 +10,7 @@ export const AppNavigator = () => (
   <Stack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#034C53',
+        backgroundColor: '#007074',
         elevation: 8,
         shadowColor: '#007074',
         shadowOffset: { width: 0, height: 2 },
@@ -21,6 +21,7 @@ export const AppNavigator = () => (
       headerTintColor: '#FFC1B4',
       headerTitleStyle: {
         fontWeight: '700',
+        backgroundColor: '#007074',
         fontSize: 20,
         fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif-medium',
       },
@@ -38,6 +39,7 @@ export const AppNavigator = () => (
         title: '📖 Book Library',
         headerTitleStyle: {
           color: '#F38C79',
+          backgroundColor: '#007074',
           fontSize: 22,
           fontWeight: '800'
         }
