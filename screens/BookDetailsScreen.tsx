@@ -43,22 +43,28 @@ export const BookDetailsScreen = ({ route, navigation }: { route: any, navigatio
     <View style={styles.container}>
       <Card>
       <Card.Cover source={{ uri: book.imageUrl }} style={styles.coverImage}/>
-        <Card.Content>
-          <Title style={styles.title}>{book.title}</Title>
-          <Paragraph>Author: {book.author}</Paragraph>
-          <Paragraph>Published: {book.publishedYear}</Paragraph>
-          <Paragraph>Status: {book.isBorrowed ? 'Borrowed' : 'Available'}</Paragraph>
-          <Paragraph style={styles.description}>{book.description}</Paragraph>
-        </Card.Content>
+      <Card.Content>
+        <Title style={styles.title}>{book.title}</Title>
+        <Paragraph style={styles.detailText}>Author: {book.author}</Paragraph>
+        <Paragraph style={styles.detailText}>Published: {book.publishedYear}</Paragraph>
+        <Paragraph style={[styles.detailText, { 
+          color: book.isBorrowed ? '#F38C79' : '#007074',
+          fontWeight: '700'
+        }]}>
+          Status: {book.isBorrowed ? 'Borrowed' : 'Available'}
+        </Paragraph>
+        <Paragraph style={styles.description}>{book.description}</Paragraph>
+      </Card.Content>
       </Card>
 
       {!book.isBorrowed && (
         <Button 
           mode="contained" 
           style={styles.button}
+          labelStyle={{ color: 'white', fontWeight: '600' }}
           onPress={handleBorrow}
         >
-          Borrow Book
+          Borrow This Book
         </Button>
       )}
     </View>
@@ -67,21 +73,39 @@ export const BookDetailsScreen = ({ route, navigation }: { route: any, navigatio
 
 const styles = StyleSheet.create({
   container: { 
-    padding: 10 
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#FFC1B4'
   },
   title: { 
-    fontSize: 24, 
-    marginBottom: 10 
+    fontSize: 28, 
+    color: '#034C53',
+    fontWeight: '800',
+    marginVertical: 16
   },
   description: { 
-    marginTop: 10 
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#034C53',
+    marginVertical: 16
   },
   button: { 
-    marginTop: 20 
+    backgroundColor: '#F38C79',
+    borderRadius: 8,
+    margin: 16,
+    paddingVertical: 6
   },
   coverImage: {
-    height: 400,
+    height: 320,
     resizeMode: 'contain',
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#00707420',
+    margin: 16,
+    borderRadius: 8
+  },
+  detailText: {
+    fontSize: 16,
+    color: '#007074',
+    marginVertical: 4,
+    fontWeight: '500'
   }
 });

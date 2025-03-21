@@ -45,12 +45,13 @@ export const BorrowedBooksScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Card style={styles.card}>
-            <Card.Content>
-              <Title>{item.title}</Title>
+            <Card.Content style={{ padding: 16 }}>
+              <Title style={{ color: '#034C53', fontWeight: '700' }}>{item.title}</Title>
               <Title style={styles.author}>{item.author}</Title>
               <Button 
                 mode="contained" 
                 style={styles.button}
+                labelStyle={{ color: 'white', fontWeight: '600' }}
                 onPress={() => handleReturn(item.id)}
               >
                 Return Book
@@ -64,8 +65,31 @@ export const BorrowedBooksScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 10 },
-  card: { margin: 5 },
-  author: { fontSize: 16, color: '#666' },
-  button: { marginTop: 10 }
+  container: { 
+    flex: 1, 
+    padding: 16,
+    backgroundColor: '#FFC1B4'
+  },
+  card: { 
+    marginVertical: 8,
+    borderRadius: 12,
+    backgroundColor: 'white',
+    elevation: 3,
+    shadowColor: '#034C53',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  author: { 
+    fontSize: 14, 
+    color: '#007074',
+    marginTop: 4,
+    fontWeight: '500'
+  },
+  button: { 
+    backgroundColor: '#F38C79',
+    borderRadius: 8,
+    marginTop: 16,
+    paddingVertical: 4
+  }
 });
