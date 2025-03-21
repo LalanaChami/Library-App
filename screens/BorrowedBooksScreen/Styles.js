@@ -27,6 +27,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 16,
     paddingVertical: 4
+  },
+  image: { 
+    width: 150, 
+    height: '100%', 
+    borderRadius: 4, 
+    marginRight: 16 
   }
 });
 

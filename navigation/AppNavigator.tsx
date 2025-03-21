@@ -60,7 +60,7 @@ export const AppNavigator = () => (
       name="BorrowedBooks" 
       component={BorrowedBooksScreen} 
       options={{ 
-        title: '📚 My Books',
+        title: '📚 My Borrowed Books',
         headerTitleStyle: {
           color: '#F38C79',
           fontSize: 22,

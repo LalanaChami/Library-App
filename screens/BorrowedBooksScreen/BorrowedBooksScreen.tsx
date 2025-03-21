@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, Alert } from 'react-native';
+import { View, FlatList, Alert, Image } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { ref, onValue, update } from 'firebase/database';
 import { db } from '../../firebase';
@@ -50,17 +50,23 @@ export const BorrowedBooksScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Card style={styles.card}>
-            <Card.Content style={{ padding: 16 }}>
-              <Title style={{ color: '#034C53', fontWeight: '700' }}>{item.title}</Title>
-              <Title style={styles.author}>{item.author}</Title>
-              <Button 
-                mode="contained" 
-                style={styles.button}
-                labelStyle={{ color: 'white', fontWeight: '600' }}
-                onPress={() => handleReturn(item.id)}
-              >
-                Return Book
-              </Button>
+            <Card.Content style={{ padding: 16, flexDirection: 'row' }}>
+              <Image 
+                source={{ uri: item.imageUrl }} 
+                style={styles.image} 
+              />
+              <View style={{ flex: 1 }}>
+                <Title style={{ color: '#034C53', fontWeight: '700' }}>{item.title}</Title>
+                <Title style={styles.author}>{item.author}</Title>
+                <Button 
+                  mode="contained" 
+                  style={styles.button}
+                  labelStyle={{ color: 'white', fontWeight: '600' }}
+                  onPress={() => handleReturn(item.id)}
+                >
+                  Return Book
+                </Button>
+              </View>
             </Card.Content>
           </Card>
         )}
