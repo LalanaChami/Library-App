@@ -14,13 +14,17 @@ export const BorrowedBooksScreen = () => {
     const unsubscribe = onValue(userRef, (snapshot) => {
       const bookIds = Object.keys(snapshot.val() || {});
       Promise.all(
-          bookIds.map(bookId => 
-               new Promise(resolve => 
-                    onValue(ref(db, `books/${bookId}`), (bookSnap) => 
-                    resolve({ id: bookId, ...bookSnap.val() }))
-               ).then(books => setBorrowedBooks(books as any[]))
+        bookIds.map(bookId => 
+          new Promise(resolve => 
+            onValue(ref(db, `books/${bookId}`), (bookSnap) => 
+              resolve({ id: bookId, ...bookSnap.val() })
+            )
           )
-     );
+        )
+      ).then((books) => {
+        // console.log(books as any[]);
+        setBorrowedBooks(books as any[]);
+      });
     });
 
     return () => unsubscribe();
