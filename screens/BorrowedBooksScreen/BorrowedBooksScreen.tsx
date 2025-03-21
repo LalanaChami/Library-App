@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList, Alert } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { ref, onValue, update } from 'firebase/database';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 
 export const BorrowedBooksScreen = () => {
   const [borrowedBooks, setBorrowedBooks] = useState<any[]>([]);

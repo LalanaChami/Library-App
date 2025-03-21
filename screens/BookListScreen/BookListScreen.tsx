@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
-import { Card, Title, Button } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { ref, onValue } from 'firebase/database';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { NavigationProp } from '@react-navigation/native';
 
 interface Book {

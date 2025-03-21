@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Alert, Image } from 'react-native';
 import { ref, onValue, update } from 'firebase/database';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { Card, Title, Paragraph, Button } from 'react-native-paper';
 import { NavigationProp } from '@react-navigation/native';
 

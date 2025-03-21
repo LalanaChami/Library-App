@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { BookListScreen } from '../screens/BookListScreen';
-import { BookDetailsScreen } from '../screens/BookDetailsScreen';
-import { BorrowedBooksScreen } from '../screens/BorrowedBooksScreen';
+import { BookListScreen } from '../screens/BookListScreen/BookListScreen';
+import { BookDetailsScreen } from '../screens/BookDetailsScreen/BookDetailsScreen';
+import { BorrowedBooksScreen } from '../screens/BorrowedBooksScreen/BorrowedBooksScreen';
 import { Platform } from 'react-native';
 
 const Stack = createStackNavigator();
