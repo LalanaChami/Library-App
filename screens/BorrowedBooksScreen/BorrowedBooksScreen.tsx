@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList, Alert } from 'react-native';
+import { View, FlatList, Alert } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { ref, onValue, update } from 'firebase/database';
 import { db } from '../../firebase';
+import styles from './Styles';
 
 export const BorrowedBooksScreen = () => {
   const [borrowedBooks, setBorrowedBooks] = useState<any[]>([]);
@@ -63,33 +64,3 @@ export const BorrowedBooksScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: 16,
-    backgroundColor: '#FFC1B4'
-  },
-  card: { 
-    marginVertical: 8,
-    borderRadius: 12,
-    backgroundColor: 'white',
-    elevation: 3,
-    shadowColor: '#034C53',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  author: { 
-    fontSize: 14, 
-    color: '#007074',
-    marginTop: 4,
-    fontWeight: '500'
-  },
-  button: { 
-    backgroundColor: '#F38C79',
-    borderRadius: 8,
-    marginTop: 16,
-    paddingVertical: 4
-  }
-});
